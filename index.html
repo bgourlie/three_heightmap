@@ -8,7 +8,6 @@
 <div id="container" style="position: absolute; left:0; top:0"></div>
 <script id="vertexShader" type="x-shader/x-vertex">
   uniform sampler2D bumpTexture; // defined in heightmap.js
-  uniform float bumpScale;
 
   varying float vAmount;
   varying vec2 vUV;
@@ -21,7 +20,7 @@
     vAmount = dot(bumpData, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/160581375.0));
 
     // move the position along the normal
-    vec3 newPosition = position + normal * bumpScale * vAmount;
+    vec3 newPosition = position + normal * vAmount;
 
     gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
   }

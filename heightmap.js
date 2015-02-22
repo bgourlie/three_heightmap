@@ -48,13 +48,9 @@ function init() {
     var bumpTexture = new THREE.ImageUtils.loadTexture('heightmap.png');
     bumpTexture.wrapS = bumpTexture.wrapT = THREE.RepeatWrapping;
 
-    // magnitude of normal displacement
-    var bumpScale = 200.0;
-
     // use "this." to create global object
     var customUniforms = {
-        bumpTexture: {type: "t", value: bumpTexture},
-        bumpScale: {type: "f", value: bumpScale}
+        bumpTexture: {type: "t", value: bumpTexture}
     };
 
     // create custom material from the shader code above
