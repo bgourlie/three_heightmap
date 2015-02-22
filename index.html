@@ -17,7 +17,9 @@
     vUV = uv;
     vec4 bumpData = texture2D( bumpTexture, uv );
 
-    vAmount = dot(bumpData, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/160581375.0));
+    vAmount = dot(bumpData, vec4(1.0, 255.0, 65025.0, 160581375.0));
+    // Uncomment to see a "flatter" version
+    //vAmount = dot(bumpData, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/160581375.0));
 
     // move the position along the normal
     vec3 newPosition = position + normal * vAmount;
@@ -34,7 +36,7 @@ varying float vAmount;
 
 void main()
 {
-  gl_FragColor = vec4(vAmount, vAmount, vAmount, 1.0);
+  gl_FragColor = vec4(vAmount + 0.2, vAmount, vAmount, 1.0);
 }
 
 </script>
