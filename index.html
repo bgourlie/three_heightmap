@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<div id="container" style="position: absolute; left:0; top:0"></div>
+<script id="vertexShader" type="x-shader/x-vertex">
+  uniform sampler2D bumpTexture; // defined in heightmap.js
+  uniform float bumpScale;
+
+  varying float vAmount;
+  varying vec2 vUV;
+
+  void main()
+  {
+    vUV = uv;
+    vec4 bumpData = texture2D( bumpTexture, uv );
+
+    vAmount = dot(bumpData, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/160581375.0));
+
+    // move the position along the normal
+    vec3 newPosition = position + normal * bumpScale * vAmount;
+
+    gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
+  }
+
+</script>
+
+<script id="fragmentShader" type="x-shader/x-vertex">
+varying vec2 vUV;
+
+varying float vAmount;
+
+void main()
+{
+  gl_FragColor = vec4(vAmount, vAmount, vAmount, 1.0);
+}
+
+</script>
+<script src="lib/three.min.js"></script>
+<script src="lib/threex.windowresize.js"></script>
+<script src="lib/stats.min.js"></script>
+<script src="lib/OrbitControls.js"></script>
+<script src="heightmap.js" type="application/javascript"></script>
+</body>
+</html>
