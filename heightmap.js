@@ -32,12 +32,12 @@ function init() {
     // CONTROLS
     controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-	// STATS
-	stats = new Stats();
-	stats.domElement.style.position = 'absolute';
-	stats.domElement.style.bottom = '0px';
-	stats.domElement.style.zIndex = 100;
-    container.appendChild( stats.domElement );
+    // STATS
+    stats = new Stats();
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.bottom = '0px';
+    stats.domElement.style.zIndex = 100;
+    container.appendChild(stats.domElement);
 
     // LIGHT
     var light = new THREE.PointLight(0xffffff);
