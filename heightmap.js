@@ -17,7 +17,7 @@ function init() {
     var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 1000000;
     camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
     scene.add(camera);
-    camera.position.set(0, 1500, 800);
+    camera.position.set(0, 3500, 5000);
     camera.lookAt(scene.position);
 
     // RENDERER
