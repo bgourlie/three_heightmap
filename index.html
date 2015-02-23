@@ -14,6 +14,7 @@
 
   void main()
   {
+    float scaleAmt = 300.0;
     vUV = uv;
     vec4 bumpData = texture2D( bumpTexture, uv );
 
@@ -22,7 +23,7 @@
     vAmount = dot(bumpData, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/16581375.0));
 
     // move the position along the normal
-    vec3 newPosition = position + normal * vAmount;
+    vec3 newPosition = position + normal * scaleAmt * vAmount;
 
     gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
   }
