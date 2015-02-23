@@ -58,8 +58,8 @@ function init() {
     var customMaterial = new THREE.ShaderMaterial(
         {
             uniforms: customUniforms,
-            vertexShader: document.getElementById('vertexShader').textContent,
-            fragmentShader: document.getElementById('fragmentShader').textContent
+            vertexShader: document.getElementById('terrainVertexShader').textContent,
+            fragmentShader: document.getElementById('terrainFragmentShader').textContent
         });
 
     var planeGeo = new THREE.PlaneBufferGeometry(5000, 5000, 1000, 1000);
@@ -67,6 +67,16 @@ function init() {
     plane.rotation.x = -Math.PI / 2;
     plane.position.y = 1;
     scene.add(plane);
+
+    //var waterGeo = new THREE.PlaneGeometry( 5000, 5000, 1, 1 );
+	//var waterTex = new THREE.ImageUtils.loadTexture( 'water512.jpg' );
+	//waterTex.wrapS = waterTex.wrapT = THREE.RepeatWrapping;
+	//waterTex.repeat.set(5,5);
+	//var waterMat = new THREE.MeshBasicMaterial( {map: waterTex, transparent:true, opacity:0.40} );
+	//var water = new THREE.Mesh(	waterGeo, waterMat );
+	//water.rotation.x = -Math.PI / 2;
+	//water.position.y = 100;
+	//scene.add( water);
 }
 
 function animate() {
