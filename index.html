@@ -29,6 +29,8 @@
 
 <script id="terrainFragmentShader" type="x-shader/x-vertex">
 varying float vAmount;
+varying vec2 vUV;
+uniform sampler2D colorMap;
 
 void main()
 {
@@ -36,8 +38,8 @@ void main()
   if(vAmount < 100.0) {
     color = vec4(0.0, 0.0, vAmount / 400.0, 1.0);
   }else {
-    float amt = vAmount / 300.0;
-    color = vec4(amt, amt, amt, 1.0);
+    vec4 colorData = texture2D( colorMap, vUV );
+    color = vec4(colorData.r, colorData.g, colorData.b, 1.0);
   }
 
   gl_FragColor = color;

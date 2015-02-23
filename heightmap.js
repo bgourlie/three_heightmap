@@ -46,10 +46,12 @@ function init() {
 
     // texture used to generate "bumpiness"
     var bumpTexture = new THREE.ImageUtils.loadTexture('heightmap.png');
+    var colorMap = new THREE.ImageUtils.loadTexture('colormap.png');
     bumpTexture.wrapS = bumpTexture.wrapT = THREE.RepeatWrapping;
 
     // use "this." to create global object
     var customUniforms = {
+        colorMap: {type: "t", value: colorMap},
         bumpTexture: {type: "t", value: bumpTexture}
     };
 
